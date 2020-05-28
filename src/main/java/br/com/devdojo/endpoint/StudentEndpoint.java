@@ -20,7 +20,7 @@ import br.com.devdojo.model.Student;
  */
 
 @RestController  
-@RequestMapping("student")
+@RequestMapping("students")
 
 public class StudentEndpoint {
 	
