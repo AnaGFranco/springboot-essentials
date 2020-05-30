@@ -5,11 +5,11 @@ package br.com.devdojo.error;
  * @author Ana Gabriela Franco
  */
 
-public class CostomErrorType {
+public class CustomErrorType {
 
 	private String errorMessage;
 
-	public CostomErrorType(String errorMessage) {
+	public CustomErrorType(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.devdojo.error.CustomErrorType;
 import br.com.devdojo.model.Student;
 import br.com.devdojo.util.DateUtil;
-
 
 /**
  * Curso DevDojo - SpringBoot
@@ -24,36 +24,38 @@ import br.com.devdojo.util.DateUtil;
  *
  */
 
-@RestController  
+@RestController
 @RequestMapping("students")
 
 public class StudentEndpoint {
-	
+
 	private final DateUtil dateUtil;
-	
-	
+
 	@Autowired
 	public StudentEndpoint(DateUtil dateUtil) {
 		this.dateUtil = dateUtil;
 	}
 
-	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> listAll(){
-		
-		//System.out.println("--------" + dateUtil.formatLocalDateTimeToDateBaseStyle(LocalDateTime.now()));
-		
+	public ResponseEntity<?> listAll() {
+
+		// System.out.println("--------" +
+		// dateUtil.formatLocalDateTimeToDateBaseStyle(LocalDateTime.now()));
+
 		return new ResponseEntity<>(Student.studentList, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	public ResponseEntity<?> getStudantById(@PathVariable("id") int id){
 		Student student = new Student();
 		student.setId(id);
 		int index = Student.studentList.indexOf(student);
+		
+		if (index == -1) 	
+			return new ResponseEntity<>(new CustomErrorType("Estudant not found"), HttpStatus.NOT_FOUND);	
+		return new ResponseEntity<>(Student.studentList.get(index), HttpStatus.OK);			
+		}
 
 	}
-	
 
-	
 }
