@@ -25,7 +25,7 @@ public class Student {
 	}
 	
 	private static void studentRepository() {
-		studentList = new ArrayList<>(asList(new Student("Ana"), new Student("Gabriela")));
+		studentList = new ArrayList<>(asList(new Student(1,"Ana"), new Student(2,"Gabriela")));
 	}
 	
 	public Student(String name) {
