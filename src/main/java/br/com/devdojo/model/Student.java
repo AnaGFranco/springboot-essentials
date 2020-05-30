@@ -11,6 +11,10 @@ public class Student {
 	private String name;
 	public static List<Student> studentList;
 	
+	static{
+		studentRepository();
+	}
+	
 	
 	public Student(int id, String name) {
 		this.setId(id);
@@ -20,7 +24,7 @@ public class Student {
 	public Student() {
 	}
 	
-	private static void studantRepository() {
+	private static void studentRepository() {
 		studentList = new ArrayList<>(asList(new Student("Ana"), new Student("Gabriela")));
 	}
 	
