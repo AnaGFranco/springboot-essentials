@@ -24,6 +24,22 @@ public class Student {
 	public Student() {
 	}
 	
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
 	private static void studentRepository() {
 		studentList = new ArrayList<>(asList(new Student(1,"Ana"), new Student(2,"Gabriela")));
 	}
