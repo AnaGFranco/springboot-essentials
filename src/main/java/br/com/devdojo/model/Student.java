@@ -11,10 +11,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Student extends AbstractEntity {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -1516289850980251141L;
+	
 	@NotEmpty(message = "O campo nome do estudante é obrigatório")
 	private String name;
 	@NotEmpty
