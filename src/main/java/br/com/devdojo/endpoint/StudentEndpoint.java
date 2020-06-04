@@ -2,9 +2,11 @@ package br.com.devdojo.endpoint;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.jayway.jsonpath.internal.JsonContext;
 
 import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.model.Student;
@@ -66,7 +66,8 @@ public class StudentEndpoint {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Student student) {
+	@Transactional(rollbackOn = Exception.class) //@Valid validar dados preenchidos no body
+	public ResponseEntity<?> sasve(@Valid @RequestBody Student student) {
 		return new ResponseEntity<>(studentDAO.save(student), HttpStatus.CREATED);
 	}
 
