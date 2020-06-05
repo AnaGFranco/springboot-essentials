@@ -2,11 +2,14 @@ package br.com.devdojo.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import br.com.devdojo.model.Student;
 
-public interface StudentRepository extends CrudRepository<Student,Long>{
+
+// retira CrudRepository do extends e extends PagingAndSortingRepository para realizar a paginação, o mesmo tem o extends CrudRepository
+
+public interface StudentRepository extends PagingAndSortingRepository<Student,Long>{
 	
 	List<Student> findByNameIgnoreCaseContaining(String name);
 }

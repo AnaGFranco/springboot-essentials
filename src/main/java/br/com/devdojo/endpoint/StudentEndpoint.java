@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,9 +46,9 @@ public class StudentEndpoint {
 	}
 
 	@GetMapping
-	public ResponseEntity<?> listAll() {
+	public ResponseEntity<?> listAll(Pageable pegeable) { // obj Pageable para paginação
 
-		return new ResponseEntity<>(studentDAO.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(studentDAO.findAll(pegeable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}")
