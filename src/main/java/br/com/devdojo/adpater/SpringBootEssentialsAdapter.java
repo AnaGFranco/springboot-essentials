@@ -26,3 +26,6 @@ public class SpringBootEssentialsAdapter  implements  WebMvcConfigurer {
         argumentResolvers.add(phmar);
     }
 }
+
+// http://localhost:8080/students?sort=name,asc -> buscar e ordem alfabetica pelo compo "nome"
+// http://localhost:8080/students?page=1 -> percorrer paginas
