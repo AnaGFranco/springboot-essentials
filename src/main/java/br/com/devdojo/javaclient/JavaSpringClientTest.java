@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.devdojo.model.PagebleResponse;
 import br.com.devdojo.model.Student;
 
 public class JavaSpringClientTest {
@@ -21,12 +22,18 @@ public class JavaSpringClientTest {
     	ResponseEntity<Student> forEntity = restTemplate.getForEntity("/1", Student.class);
     	System.out.println(student);
     	System.out.println(forEntity.getBody());
-    	Student[] students = restTemplate.getForObject("/1", Student[].class);
-    	System.out.println(Arrays.toString(students));
-    	ResponseEntity<List<Student>> exchange = restTemplate.exchange("/", HttpMethod.GET, null,
-    			new ParameterizedTypeReference<List<Student>>() {});
-    	System.out.println(exchange.getBody());
+//    	Student[] students = restTemplate.getForObject("/1", Student[].class);
+//    	System.out.println(Arrays.toString(students));
+//    	ResponseEntity<List<Student>> exchange = restTemplate.exchange("/", HttpMethod.GET, null,
+//    			new ParameterizedTypeReference<List<Student>>() {});
+//    	System.out.println(exchange.getBody());
 
+    	
+    	ResponseEntity<PagebleResponse<Student>> exchange = restTemplate.exchange("/", HttpMethod.GET, null,
+    			new ParameterizedTypeReference<PagebleResponse<Student>>() {});
+    	System.out.println(exchange);
+    	
+    
     }
 
 }
