@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import br.com.devdojo.util.CustomSortDeserializer;
 
 
-public class PagebleResponse<T> extends PageImpl<T> {
+public class PageableResponse<T> extends PageImpl<T> {
 
 	private static final long serialVersionUID = 8525158060252030184L;
 
@@ -21,7 +21,7 @@ public class PagebleResponse<T> extends PageImpl<T> {
     private boolean first;
     private int totalPages;
 
-    public PagebleResponse(@JsonProperty("content") List<T> content,
+    public PageableResponse(@JsonProperty("content") List<T> content,
                             @JsonProperty("number") int page,
                             @JsonProperty("size") int size,
                             @JsonProperty("totalElements") long totalElements,
@@ -30,7 +30,7 @@ public class PagebleResponse<T> extends PageImpl<T> {
         super(content, PageRequest.of(page, size,sort), totalElements);
     }
 
-    public PagebleResponse() {
+    public PageableResponse() {
         super(new ArrayList<>());
     }
 
